@@ -16,7 +16,9 @@ app.get('/ping', (req, res) => {
 });
 
 app.use(bodyParser.json());
-app.use(cors());
+app.use(cors({
+  origin: ['https://your-frontend-domain.vercel.app', 'http://localhost:3000']
+}));
 app.use('/auth', AuthRouter);
 app.use('/products', ProductRouter);
 app.use('/expenses', ensureAuthenticated, ExpenseRouter)
